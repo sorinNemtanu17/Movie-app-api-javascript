@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+
+  margin: 50px auto;
+  width: 750px;
+}
+.container article {
+  flex: 1;
+}
+.poster {
+  margin: 0 20px 0 0;
+}
+.details {
+  margin: 0 50px 0 0;
+}
+.details h1 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+
+  font-size: 30px;
+}
+.details .rating {
+  font-size: 20px;
+  overflow-wrap: break-word;
+}
+.stars {
+  font-size: 1.5em;
+}
+.stars span {
+  margin-left: 15px;
+}
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+    width: auto;
+  }
+  .poster img {
+    min-width: 70%;
+    height: auto;
+  }
+}
