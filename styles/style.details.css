@@ -1,21 +1,27 @@
+body {
+  margin: 0;
+  color: #ccc;
+  background-color: #2e2e2e;
+}
 .container {
   display: flex;
 
   margin: 50px auto;
-  width: 750px;
+  width: 735px;
 }
 .container article {
   flex: 1;
 }
 .poster {
   margin: 0 20px 0 0;
+  filter: drop-shadow(0px 0px 10px rgb(116, 116, 116));
 }
 .details {
   margin: 0 50px 0 0;
 }
 .details h1 {
   padding-bottom: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ccc;
 
   font-size: 30px;
 }
@@ -33,9 +39,24 @@
   .container {
     flex-direction: column;
     width: auto;
+    margin: 0;
+    text-align: center;
+  }
+  .poster {
+    padding: 50px 0 0;
+    margin: 0;
   }
   .poster img {
-    min-width: 70%;
-    height: auto;
+    min-width: 40%;
+  }
+  .details {
+    width: 400px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .stars span {
+    font-size: 0.8em;
   }
 }

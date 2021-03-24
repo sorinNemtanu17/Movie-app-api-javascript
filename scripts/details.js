@@ -1,4 +1,3 @@
-//debugger;
 function getUrlParam(name) {
   //"?altceva=ceva&movieId=601vv8075fa1c19b0022112a01&test=8"
   const search = location.search.substr(1); // substr scoate semnul intrebarii din query string
@@ -23,38 +22,36 @@ function getUrlParam(name) {
   // );
   // return undefined;
 }
-const getId = new URL(location);
+//const getId = new URL(location);
+const getId = getUrlParam('movieId');
 
-const url = `https://movies-app-siit.herokuapp.com/movies/${getId.searchParams.get(
-  'movieId'
-)}`;
+const url = `https://movies-app-siit.herokuapp.com/movies/${getId}`;
 
 function movieDetail() {
   const prom = fetch(url)
     .then((res) => res.json())
-    .then(createHtml);
+    .then((data) => {
+      createHtml(data);
+    });
 
   function createHtml(data) {
+    const image = document.querySelector('[data-movie-poster]');
+    image.setAttribute('src', data.Poster);
+
     const title = document.querySelector('[data-movie-title]');
     title.textContent = data.Title;
 
-    const image = document.querySelector('[data-movie-poster]');
-    image.setAttribute('src', data.Poster);
+    const actors = document.querySelector('[data-movie-actors]');
+    actors.textContent = `Actors: ${data.Actors.replace(/,/g, ' | ')}`;
 
     const plot = document.querySelector('[data-movie-plot]');
     plot.textContent = data.Plot;
 
     const rating = document.querySelector('[data-movie-rating]');
-    rating.textContent = data.imdbRating;
-
-    const span = document.createElement('span');
-    rating.appendChild(span);
-    const stars = '\u2606';
-    span.textContent = stars.repeat(10);
-  }
-  function starGen() {
-    const totalStar = 10;
-    const procentage = (imdbRating / totalStar) * 100;
+    const star = '\u2605';
+    rating.textContent = `Imdb rating ${data.imdbRating} ${star.repeat(
+      Math.round(data.imdbRating)
+    )}`;
   }
 }
 movieDetail();
