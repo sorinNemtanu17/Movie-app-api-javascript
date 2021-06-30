@@ -16,13 +16,12 @@ function getUrlParam(name) {
     }
   }
 
-  // console.warn(
-  //   'The query parameter you tried to get: "%s" is not available in the URL.',
-  //   name
-  // );
-  // return undefined;
+  console.warn(
+    'The query parameter you tried to get: "%s" is not available in the URL.',
+    name
+  );
+  return undefined;
 }
-//const getId = new URL(location);
 const getId = getUrlParam('movieId');
 
 const url = `https://movies-app-siit.herokuapp.com/movies/${getId}`;
@@ -31,6 +30,7 @@ function movieDetail() {
   const prom = fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       createHtml(data);
     });
 

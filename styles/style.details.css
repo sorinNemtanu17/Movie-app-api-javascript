@@ -5,7 +5,6 @@ body {
 }
 .container {
   display: flex;
-
   margin: 50px auto;
   width: 735px;
 }
@@ -14,7 +13,7 @@ body {
 }
 .poster {
   margin: 0 20px 0 0;
-  filter: drop-shadow(0px 0px 10px rgb(116, 116, 116));
+  filter: drop-shadow(0px 0px 10px #747474);
 }
 .details {
   margin: 0 50px 0 0;
