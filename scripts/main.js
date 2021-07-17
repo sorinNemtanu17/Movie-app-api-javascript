@@ -1,12 +1,23 @@
 // https://movies-app-siit.herokuapp.com/movies
 function movies() {
-  const moviesContainer = document.querySelector('main');
-  moviesContainer.classList.add('movies-container');
   const url = 'https://movies-app-siit.herokuapp.com/movies?take=9';
 
-  const promise = fetch(url)
+  const moviesContainer = document.querySelector('main');
+  moviesContainer.classList.add('movies-container');
+
+  const loadingState = document.createElement('h1');
+  loadingState.innerText = 'Loading...';
+  const isLoading = setTimeout(() => {
+    loadingState.innerText = 'Wait for it...';
+  }, 1000);
+
+  moviesContainer.appendChild(loadingState);
+
+  fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      moviesContainer.removeChild(loadingState);
+
       for (const movie of data.results) {
         renderCard(movie);
       }

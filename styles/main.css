@@ -5,6 +5,7 @@
 }
 .movies-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 800px;
   gap: 20px;
